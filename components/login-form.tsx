@@ -13,18 +13,33 @@ export function LoginForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError("")
+
+    console.log("[v0] Login attempt with:", { email, password: password ? "***" : "" })
+
+    if (!email || !password) {
+      setError("Please enter both email and password")
+      setIsLoading(false)
+      return
+    }
 
     // Simulate login process
     setTimeout(() => {
+      console.log("[v0] Login simulation complete, redirecting to dashboard")
       setIsLoading(false)
-      // For MVP, any credentials work
-      if (email && password) {
+
+      try {
         router.push("/dashboard")
+        console.log("[v0] Navigation to dashboard initiated")
+      } catch (err) {
+        console.error("[v0] Navigation error:", err)
+        setError("Navigation failed. Please try again.")
       }
     }, 1000)
   }
@@ -36,6 +51,7 @@ export function LoginForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {error && <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">{error}</div>}
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -61,6 +77,7 @@ export function LoginForm() {
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Signing in..." : "Sign In"}
           </Button>
+          <p className="text-sm text-gray-500 text-center mt-2">Demo: Use any email and password to sign in</p>
         </form>
       </CardContent>
     </Card>

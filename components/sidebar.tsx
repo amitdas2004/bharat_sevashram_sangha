@@ -1,22 +1,32 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, GraduationCap, Users, DollarSign, Calendar, Info, LogOut } from "lucide-react"
+import { Home, GraduationCap, Users, DollarSign, Calendar, Info, LogOut, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Academics", href: "/dashboard/academics", icon: GraduationCap },
   { name: "Attendance", href: "/dashboard/attendance", icon: Users },
+  { name: "General Info", href: "/dashboard/info", icon: Info },
+  { name: "Help & Support", href: "/dashboard/help-support", icon: MessageCircle },
   { name: "Finance", href: "/dashboard/finance", icon: DollarSign },
   { name: "Events & Notices", href: "/dashboard/events", icon: Calendar },
-  { name: "General Info", href: "/dashboard/info", icon: Info },
 ]
 
 export function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
+
+  const handleSignOut = () => {
+    // Clear any stored auth data
+    localStorage.removeItem("user")
+    sessionStorage.clear()
+    // Redirect to login page
+    router.push("/login")
+  }
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 min-h-screen">
@@ -45,7 +55,11 @@ export function Sidebar() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <Button variant="ghost" className="w-full justify-start text-gray-600 hover:text-gray-900">
+          <Button
+            variant="ghost"
+            className="w-full justify-start text-gray-600 hover:text-gray-900"
+            onClick={handleSignOut}
+          >
             <LogOut className="mr-3 h-5 w-5" />
             Sign Out
           </Button>
