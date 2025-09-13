@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useRouter } from "next/navigation"
+import { createClient } from "@/lib/supabase/client"
 
 export function LoginForm() {
   const [email, setEmail] = useState("")
@@ -21,27 +22,37 @@ export function LoginForm() {
     setIsLoading(true)
     setError("")
 
-    console.log("[v0] Login attempt with:", { email, password: password ? "***" : "" })
-
     if (!email || !password) {
       setError("Please enter both email and password")
       setIsLoading(false)
       return
     }
 
-    // Simulate login process
-    setTimeout(() => {
-      console.log("[v0] Login simulation complete, redirecting to dashboard")
-      setIsLoading(false)
+    try {
+      const supabase = createClient()
 
-      try {
-        router.push("/dashboard")
-        console.log("[v0] Navigation to dashboard initiated")
-      } catch (err) {
-        console.error("[v0] Navigation error:", err)
-        setError("Navigation failed. Please try again.")
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+        options: {
+          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
+        },
+      })
+
+      if (authError) {
+        setError(authError.message)
+        return
       }
-    }, 1000)
+
+      if (data.user) {
+        router.push("/dashboard")
+      }
+    } catch (err) {
+      console.error("Login error:", err)
+      setError("Network error. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -77,7 +88,9 @@ export function LoginForm() {
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Signing in..." : "Sign In"}
           </Button>
-          <p className="text-sm text-gray-500 text-center mt-2">Demo: Use any email and password to sign in</p>
+          <p className="text-sm text-gray-500 text-center mt-2">
+            Don't have an account? Contact school administration.
+          </p>
         </form>
       </CardContent>
     </Card>
