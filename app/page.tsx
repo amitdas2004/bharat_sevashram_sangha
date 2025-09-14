@@ -12,10 +12,17 @@ export default function HomePage() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xl font-bold">S</span>
+               <Link href="/">
+                <img
+                  src="http://www.billdesk.com/hdfc/Bharat_Sevashram/images/logo_bss.gif"
+                  alt="Bharat Sevashram Sangha Logo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              </Link>
+
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Sunshine Academy</h1>
+                <h1 className="text-2xl font-bold text-gray-900">Bharat Sevashram Sangha</h1>
                 <p className="text-sm text-gray-600">Excellence in Education</p>
               </div>
             </div>
