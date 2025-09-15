@@ -12,10 +12,17 @@ export default function HomePage() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xl font-bold">S</span>
+               <Link href="/">
+                <img
+                  src="http://www.billdesk.com/hdfc/Bharat_Sevashram/images/logo_bss.gif"
+                  alt="Bharat Sevashram Sangha Logo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              </Link>
+
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Sunshine Academy</h1>
+                <h1 className="text-2xl font-bold text-gray-900">Bharat Sevashram Sangha</h1>
                 <p className="text-sm text-gray-600">Excellence in Education</p>
               </div>
             </div>
@@ -34,7 +41,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Welcome to Sunshine Academy Parent Portal</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Welcome to Bharat Sevashram Sangha Parent Portal</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Stay connected with your child's education journey. Access grades, attendance, events, and communicate with
             teachers all in one place.
@@ -113,7 +120,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600">© 2024 Sunshine Academy. All rights reserved.</p>
+          <p className="text-gray-600">© 2024 Bharat Sevashram Sangha. All rights reserved.</p>
         </div>
       </footer>
     </div>

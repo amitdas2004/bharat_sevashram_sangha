@@ -12,7 +12,7 @@ export function DashboardHeader() {
             <span className="text-white text-lg font-bold">S</span>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">Sunshine Academy</h2>
+            <h2 className="text-xl font-semibold text-gray-900">Bharat Sevashram Sangha</h2>
             <p className="text-sm text-gray-500">Parent Portal</p>
           </div>
         </div>

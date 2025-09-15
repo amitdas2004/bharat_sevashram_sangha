@@ -40,7 +40,7 @@ export default function HelpSupportPage() {
     {
       type: "bot",
       content:
-        "Hello! I'm here to help answer your questions about Sunshine Academy. You can ask me about school timings, holidays, contact information, and more!",
+        "Hello! I'm here to help answer your questions about Bharat Sevashram Sangha. You can ask me about school timings, holidays, contact information, and more!",
     },
   ])
   const [inputMessage, setInputMessage] = useState("")
@@ -90,7 +90,7 @@ export default function HelpSupportPage() {
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Help & Support</h1>
-        <p className="text-gray-600">Get instant help and answers to your questions about Sunshine Academy</p>
+        <p className="text-gray-600">Get instant help and answers to your questions about Bharat Sevashram Sangha</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -20,7 +20,7 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! I'm here to help answer your questions about Sunshine Academy. You can ask me about school timings, holidays, contact information, and more!",
+      text: "Hello! I'm here to help answer your questions about Bharat Sevashram Sangha. You can ask me about school timings, holidays, contact information, and more!",
       isBot: true,
       timestamp: new Date(),
     },
