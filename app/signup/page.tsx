@@ -8,7 +8,13 @@ export default function SignupPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-white text-2xl font-bold">S</span>
+            <Link href="/">
+                <img
+                  src="http://www.billdesk.com/hdfc/Bharat_Sevashram/images/logo_bss.gif"
+                  alt="Bharat Sevashram Sangha Logo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              </Link>
             </div>
           </Link>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Bharat Sevashram Sangha</h1>
