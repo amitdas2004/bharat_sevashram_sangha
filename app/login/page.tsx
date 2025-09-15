@@ -11,7 +11,7 @@ export default function LoginPage() {
               <span className="text-white text-2xl font-bold">S</span>
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Sunshine Academy</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Bharat Sevashram Sangha</h1>
           <p className="text-gray-600">Parent Portal Login</p>
         </div>
         <LoginForm />

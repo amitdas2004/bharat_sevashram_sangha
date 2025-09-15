@@ -41,7 +41,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Welcome to Sunshine Academy Parent Portal</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">Welcome to Bharat Sevashram Sangha Parent Portal</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Stay connected with your child's education journey. Access grades, attendance, events, and communicate with
             teachers all in one place.
@@ -120,7 +120,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600">© 2024 Sunshine Academy. All rights reserved.</p>
+          <p className="text-gray-600">© 2024 Bharat Sevashram Sangha. All rights reserved.</p>
         </div>
       </footer>
     </div>
