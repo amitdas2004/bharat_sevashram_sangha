@@ -1,11 +1,11 @@
 "use server"
 
-import { createServerClient } from "@/lib/supabase/server"
+import { createClient as createServerSupabaseClient } from "@/lib/supabase/server"
+import { createAdminClient } from "@/lib/supabase/admin"
 import { cookies } from "next/headers"
 
 export async function signUpAction(formData: FormData) {
-  const cookieStore = cookies()
-  const supabase = createServerClient(cookieStore)
+  const supabase = await createServerSupabaseClient()
 
   const email = formData.get("email") as string
   const password = formData.get("password") as string
@@ -33,8 +33,9 @@ export async function signUpAction(formData: FormData) {
     return { error: "Failed to create user account" }
   }
 
-  // Create profile using service role to bypass RLS temporarily
-  const { error: profileError } = await supabase.from("profiles").insert({
+  // Create profile with admin client to bypass RLS (upsert to handle existing users)
+  const admin = createAdminClient()
+  const { error: profileError } = await admin.from("profiles").upsert({
     id: authData.user.id,
     email,
     full_name: parentName,
@@ -46,18 +47,22 @@ export async function signUpAction(formData: FormData) {
     return { error: "Failed to create user profile" }
   }
 
-  // Create student record
-  const { error: studentError } = await supabase.from("students").insert({
-    student_id: `STU${Date.now()}`,
-    full_name: childName,
-    class: childClass,
-    section: "A",
-    parent_id: authData.user.id,
-  })
+  // Create student record with admin client (check if student already exists for this parent)
+  const { data: existingStudents } = await admin.from("students").select("student_id").eq("parent_id", authData.user.id).eq("full_name", childName)
+  
+  if (!existingStudents || existingStudents.length === 0) {
+    const { error: studentError } = await admin.from("students").insert({
+      student_id: `STU${Date.now()}`,
+      full_name: childName,
+      class: childClass,
+      section: "A",
+      parent_id: authData.user.id,
+    })
 
-  if (studentError) {
-    console.error("Student creation error:", studentError)
-    return { error: "Failed to create student record" }
+    if (studentError) {
+      console.error("Student creation error:", studentError)
+      return { error: "Failed to create student record" }
+    }
   }
 
   return { success: true }
