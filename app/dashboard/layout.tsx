@@ -1,6 +1,7 @@
 import type React from "react"
 import { Sidebar } from "@/components/sidebar"
 import { DashboardHeader } from "@/components/dashboard-header"
+import { PWAInstallPrompt } from "@/components/pwa-install-prompt"
 
 export default function DashboardLayout({
   children,
@@ -16,6 +17,7 @@ export default function DashboardLayout({
           <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
+      <PWAInstallPrompt />
     </div>
   )
 }
