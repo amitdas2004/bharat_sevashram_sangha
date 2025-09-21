@@ -46,13 +46,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     // Get initial session
     const getInitialSession = async () => {
+      console.log("[AuthProvider] Fetching initial session...")
       const {
         data: { session },
       } = await supabase.auth.getSession()
 
       if (session?.user) {
+        console.log("[AuthProvider] Initial session user:", session.user.id)
         setUser(session.user)
         await fetchUserData(session.user.id)
+      } else {
+        console.log("[AuthProvider] No initial session user")
       }
 
       setLoading(false)
@@ -62,10 +66,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("[AuthProvider] onAuthStateChange:", event, session?.user?.id)
       if (session?.user) {
         setUser(session.user)
         await fetchUserData(session.user.id)
       } else {
+        console.log("[AuthProvider] No session after auth state change")
         setUser(null)
         setProfile(null)
         setStudents([])
@@ -79,20 +85,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const fetchUserData = async (userId: string) => {
+    console.log("[AuthProvider] Fetching user data for:", userId)
     const supabase = createClient()
 
     // Fetch user profile
     const { data: profileData } = await supabase.from("profiles").select("*").eq("id", userId).single()
 
     if (profileData) {
+      console.log("[AuthProvider] Loaded profile:", profileData?.email)
       setProfile(profileData)
 
       // Fetch user's students
       const { data: studentsData } = await supabase.from("students").select("*").eq("parent_id", userId)
 
       if (studentsData) {
+        console.log("[AuthProvider] Loaded students count:", studentsData.length)
         setStudents(studentsData)
       }
+    } else {
+      console.log("[AuthProvider] No profile found for user")
     }
   }
 

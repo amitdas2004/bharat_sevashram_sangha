@@ -46,7 +46,7 @@ export default function InfoPage() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="mr-3 h-4 w-4 text-gray-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>+1 8017019305</span>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 h-4 w-4 text-gray-400" />

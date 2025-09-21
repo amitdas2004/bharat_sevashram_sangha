@@ -9,7 +9,15 @@ export function DashboardHeader() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white text-lg font-bold">S</span>
+            <span className="text-white text-lg font-bold">
+            <a href="/">
+                <img
+                  src="http://www.billdesk.com/hdfc/Bharat_Sevashram/images/logo_bss.gif"
+                  alt="Bharat Sevashram Sangha Logo"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              </a>
+            </span>
           </div>
           <div>
             <h2 className="text-xl font-semibold text-gray-900">Bharat Sevashram Sangha</h2>

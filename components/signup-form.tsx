@@ -121,7 +121,7 @@ export function SignupForm() {
               id="phone"
               name="phone"
               type="tel"
-              placeholder="+1 (555) 123-4567"
+              placeholder="+1 8017019305"
               value={formData.phone}
               onChange={handleChange}
               required

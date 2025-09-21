@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       password,
       options: {
         emailRedirectTo:
-          process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${process.env.NEXT_PUBLIC_SUPABASE_URL}/dashboard`,
+          process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `https://tlbuxutocpuxiovahmzn.supabase.co/dashboard`,
         data: {
           full_name: fullName,
           role: "parent",

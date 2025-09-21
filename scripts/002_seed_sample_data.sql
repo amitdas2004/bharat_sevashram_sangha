@@ -1,7 +1,7 @@
 -- Insert sample school info
 INSERT INTO public.school_info (category, title, content) VALUES
 ('contact', 'School Address', 'Bharat Sevashram Sangha, 123 Education Street, Learning City, LC 12345'),
-('contact', 'Phone Number', '+1 (555) 123-4567'),
+('contact', 'Phone Number', '+1 8017019305'),
 ('contact', 'Email', 'info@sunshineacademy.edu'),
 ('timings', 'School Hours', 'Monday to Friday: 8:00 AM - 3:00 PM'),
 ('timings', 'Office Hours', 'Monday to Friday: 7:30 AM - 4:00 PM'),

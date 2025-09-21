@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "How can I contact the school?",
     answer:
-      "You can reach us at +1 (555) 123-4567 or email info@sunshineacademy.edu. Our office is open during school hours.",
+      "You can reach us at +91 8017019305 or email info@sunshineacademy.edu. Our office is open during school hours.",
   },
   {
     question: "What is the fee payment deadline?",
@@ -45,41 +45,39 @@ export default function HelpSupportPage() {
   ])
   const [inputMessage, setInputMessage] = useState("")
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputMessage.trim()) return
 
     const userMessage = { type: "user", content: inputMessage }
     setMessages((prev) => [...prev, userMessage])
 
-    // Simple FAQ matching
-    const lowerInput = inputMessage.toLowerCase()
-    let botResponse =
-      "I'm sorry, I don't have information about that. Please contact the school office at +1 (555) 123-4567 for assistance."
-
-    if (lowerInput.includes("timing") || lowerInput.includes("hours") || lowerInput.includes("time")) {
-      botResponse =
-        "School hours are 8:00 AM - 3:00 PM (Monday-Friday) and 8:00 AM - 12:00 PM (Saturday). Sunday is closed."
-    } else if (lowerInput.includes("contact") || lowerInput.includes("phone") || lowerInput.includes("call")) {
-      botResponse =
-        "You can reach us at +1 (555) 123-4567 or email info@sunshineacademy.edu. Our office is open during school hours."
-    } else if (lowerInput.includes("fee") || lowerInput.includes("payment") || lowerInput.includes("due")) {
-      botResponse =
-        "Monthly fees are due by the 1st of each month. Late fees apply after the 10th of the month. You can view your fee details in the Finance section."
-    } else if (lowerInput.includes("attendance")) {
-      botResponse =
-        "You can view your child's attendance records in the 'Attendance' section of this portal, which is updated daily."
-    } else if (lowerInput.includes("holiday") || lowerInput.includes("vacation")) {
-      botResponse =
-        "School holidays and important dates are listed in the 'Events & Notices' section. We follow the state academic calendar."
-    } else if (lowerInput.includes("grade") || lowerInput.includes("marks") || lowerInput.includes("result")) {
-      botResponse = "You can check your child's grades and academic progress in the 'Academics' section of this portal."
-    }
-
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { type: "bot", content: botResponse }])
-    }, 1000)
-
+    const current = inputMessage
     setInputMessage("")
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: current }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        const errorMessage = data?.error || "Unknown error"
+        setMessages((prev) => [
+          ...prev,
+          { 
+            type: "bot", 
+            content: `❌ ${errorMessage.includes("API key") ? 
+              "Chat assistant is not configured yet. Please contact the administrator to set up the Google Gemini API key." : 
+              `Assistant error: ${errorMessage}`}` 
+          },
+        ])
+        return
+      }
+      setMessages((prev) => [...prev, { type: "bot", content: data?.reply || "I couldn't get a response right now." }])
+    } catch (e) {
+      setMessages((prev) => [...prev, { type: "bot", content: "There was an error contacting the assistant." }])
+    }
   }
 
   const handleFAQClick = (answer: string) => {
@@ -152,8 +150,8 @@ export default function HelpSupportPage() {
                 <Clock className="h-5 w-5 text-blue-600" />
                 <div>
                   <p className="font-medium">School Hours</p>
-                  <p className="text-sm text-gray-600">Mon-Fri: 8:00 AM - 3:00 PM</p>
-                  <p className="text-sm text-gray-600">Sat: 8:00 AM - 12:00 PM</p>
+                  <p className="text-sm text-gray-600">Mon-Fri: 10:45 AM - 4:30 PM</p>
+                  <p className="text-sm text-gray-600">Sat: 10:45 AM - 1:30 PM</p>
                 </div>
               </div>
 
@@ -161,7 +159,7 @@ export default function HelpSupportPage() {
                 <Phone className="h-5 w-5 text-blue-600" />
                 <div>
                   <p className="font-medium">Phone</p>
-                  <p className="text-sm text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-sm text-gray-600">+91 8017019305</p>
                 </div>
               </div>
 
@@ -169,7 +167,7 @@ export default function HelpSupportPage() {
                 <Mail className="h-5 w-5 text-blue-600" />
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-sm text-gray-600">info@sunshineacademy.edu</p>
+                  <p className="text-sm text-gray-600">panjipukurbharatss@gmail.com</p>
                 </div>
               </div>
 
@@ -177,7 +175,7 @@ export default function HelpSupportPage() {
                 <MapPin className="h-5 w-5 text-blue-600" />
                 <div>
                   <p className="font-medium">Address</p>
-                  <p className="text-sm text-gray-600">123 Education St, Learning City, LC 12345</p>
+                  <p className="text-sm text-gray-600">panjipukur,sanat, hoogly, west bengal, india</p>
                 </div>
               </div>
             </CardContent>

@@ -36,18 +36,18 @@ export function ChatbotWidget() {
     holiday:
       "Upcoming holidays include Winter Break (Dec 23 - Jan 6), Spring Break (Mar 15-22), and Summer Break (Jun 15 - Aug 15).",
     contact:
-      "You can contact us at +1 (555) 123-4567 or email info@sunshineacademy.edu. We're located at 123 Education St, Learning City, LC 12345.",
-    phone: "Our phone number is +1 (555) 123-4567.",
+      "You can contact us at +1 8017019305 or email info@sunshineacademy.edu. We're located at 123 Education St, Learning City, LC 12345.",
+    phone: "Our phone number is +1 8017019305.",
     email: "Our email address is info@sunshineacademy.edu.",
     address: "We're located at 123 Education St, Learning City, LC 12345.",
-    leave: "To apply for leave, please contact your child's class teacher or the main office at +1 (555) 123-4567.",
+    leave: "To apply for leave, please contact your child's class teacher or the main office at +1 8017019305.",
     admin:
-      "You can contact the admin office at +1 (555) 123-4567 or email info@sunshineacademy.edu during school hours.",
+      "You can contact the admin office at +1 8017019305 or email info@sunshineacademy.edu during school hours.",
     fees: "For fee-related queries, please contact the finance office or check the Finance section in your parent portal.",
     uniform: "Please refer to the latest uniform policy notice in the Events & Notices section of your dashboard.",
   }
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return
 
     const userMessage: Message = {
@@ -59,30 +59,41 @@ export function ChatbotWidget() {
 
     setMessages((prev) => [...prev, userMessage])
 
-    // Simple keyword matching for FAQ responses
-    const lowerInput = inputValue.toLowerCase()
-    let botResponse =
-      "I'm sorry, I didn't understand that. You can ask me about school timings, holidays, contact information, leave applications, or how to contact admin."
-
-    for (const [keyword, response] of Object.entries(faqResponses)) {
-      if (lowerInput.includes(keyword)) {
-        botResponse = response
-        break
-      }
-    }
-
-    const botMessage: Message = {
-      id: messages.length + 2,
-      text: botResponse,
-      isBot: true,
-      timestamp: new Date(),
-    }
-
-    setTimeout(() => {
-      setMessages((prev) => [...prev, botMessage])
-    }, 1000)
-
     setInputValue("")
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: inputValue }),
+      })
+      const data = await res.json()
+
+      let responseText = data?.reply || "Sorry, I couldn't get a response right now."
+      
+      if (!res.ok) {
+        const errorMessage = data?.error || "Unknown error"
+        responseText = errorMessage.includes("API key") ? 
+          "❌ Chat assistant is not configured yet. Please contact the administrator." : 
+          `❌ Assistant error: ${errorMessage}`
+      }
+
+      const botMessage: Message = {
+        id: messages.length + 2,
+        text: responseText,
+        isBot: true,
+        timestamp: new Date(),
+      }
+      setMessages((prev) => [...prev, botMessage])
+    } catch (e) {
+      const botMessage: Message = {
+        id: messages.length + 2,
+        text: "There was an error contacting the assistant.",
+        isBot: true,
+        timestamp: new Date(),
+      }
+      setMessages((prev) => [...prev, botMessage])
+    }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

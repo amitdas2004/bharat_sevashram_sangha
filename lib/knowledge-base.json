@@ -1,0 +1,178 @@
+{
+  "organization": {
+    "name": "Bharat Sevashram Sangha – Panjipukur Branch",
+    "fullName": "Bharat Sevashram Sangha, Panjipukur",
+    "address": "W744+C39, Panjipukur, West Bengal 712305",
+    "type": "Charitable organization dedicated to welfare and education of underprivileged students",
+    "supervision": "Run under guidance of Kolkata Head Office",
+    "incharge": "Shri Asit Kumar Das"
+  },
+  "contact": {
+    "phone": "080170 19305",
+    "email": "panjipukurbharatss@gmail.com",
+    "officeHours": "9:00 AM to 5:00 PM",
+    "appointmentRequired": true,
+    "appointmentNote": "Visitors must book appointment over phone before visiting in person"
+  },
+  "admission": {
+    "process": {
+      "startMonth": "October",
+      "endMonth": "December",
+      "academicSessionStart": "January"
+    },
+    "eligibility": {
+      "gender": "Boys only",
+      "categories": "Scheduled Caste and Scheduled Tribe categories only"
+    },
+    "costs": {
+      "education": "Completely free of cost",
+      "admissionCharges": "Required",
+      "extraCurricularFees": "Required"
+    },
+    "requirements": {
+      "studentMustBring": [
+        "Bucket",
+        "Pillow", 
+        "Bedsheet",
+        "Blanket"
+      ],
+      "hostelProvides": [
+        "Books",
+        "Stationery"
+      ]
+    }
+  },
+  "facilities": {
+    "teachingFaculty": "Exclusively for boys",
+    "hostelStaff": "Exclusively for boys",
+    "environment": "Focused, disciplined, and supportive environment for growth"
+  },
+  "dailyRoutine": {
+    "schedule": [
+      { "time": "5:00 AM", "activity": "Wake up" },
+      { "time": "6:00 AM", "activity": "Morning prayer" },
+      { "time": "6:30 AM", "activity": "Breakfast" },
+      { "time": "7:30 AM", "activity": "Study hours begin" },
+      { "time": "9:30 AM", "activity": "Students take shower" },
+      { "time": "10:15 AM", "activity": "Lunch" },
+      { "time": "10:45 AM", "activity": "Leave for school" },
+      { "time": "4:00 PM", "activity": "Return from school" },
+      { "time": "4:30 PM", "activity": "Snacks" },
+      { "time": "4:30 PM - 7:30 PM", "activity": "Play time" },
+      { "time": "7:30 PM", "activity": "Evening study hours begin" },
+      { "time": "9:00 PM", "activity": "Dinner" },
+      { "time": "10:30 PM", "activity": "Lights out / Bedtime" }
+    ],
+    "meals": {
+      "totalMeals": 4,
+      "freeOfCost": true,
+      "schedule": [
+        { "time": "6:30 AM", "meal": "Breakfast" },
+        { "time": "10:30 AM", "meal": "Lunch" },
+        { "time": "4:30 PM", "meal": "Snacks" },
+        { "time": "9:00 PM", "meal": "Dinner" }
+      ]
+    }
+  },
+  "vacations": {
+    "majorVacations": 2,
+    "types": [
+      {
+        "name": "Durga Puja",
+        "duration": "About one month"
+      },
+      {
+        "name": "Summer vacation", 
+        "duration": "About one month"
+      }
+    ],
+    "rules": {
+      "returnPolicy": "Compulsory for all students to return on the very first day after holidays without delay",
+      "purpose": "Ensures punctuality and regularity in academic life"
+    }
+  },
+  "rules": {
+    "prohibitedItems": [
+      "Smartphones",
+      "Laptops", 
+      "Tablets",
+      "Electronic devices",
+      "Matches",
+      "Lighters"
+    ],
+    "expectations": [
+      "Obey hostel rules",
+      "Respect teachers and staff",
+      "Follow code of conduct",
+      "Maintain cleanliness",
+      "Be punctual",
+      "Display disciplined behavior"
+    ],
+    "importance": [
+      "Cleanliness",
+      "Punctuality", 
+      "Disciplined behavior"
+    ]
+  },
+  "mission": {
+    "commitment": "Deeply committed to offering quality education, moral guidance, and disciplined lifestyle",
+    "targetStudents": "Boys from Scheduled Caste and Scheduled Tribe backgrounds",
+    "benefits": [
+      "Free learning opportunities",
+      "Character development",
+      "Values education",
+      "Discipline training",
+      "Preparation for better and brighter future"
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What are the office hours?",
+      "answer": "Office hours are 9:00 AM to 5:00 PM. Visitors must book an appointment over phone before visiting."
+    },
+    {
+      "question": "How can I contact the branch?",
+      "answer": "You can contact by phone at 080170 19305 during office hours or email at panjipukurbharatss@gmail.com."
+    },
+    {
+      "question": "When does admission start?",
+      "answer": "Admission process begins in October and continues until December each year, with new academic session starting in January."
+    },
+    {
+      "question": "Who is eligible for admission?",
+      "answer": "Only boys belonging to Scheduled Caste and Scheduled Tribe categories are eligible for admission."
+    },
+    {
+      "question": "Is education free?",
+      "answer": "Education is completely free of cost, but students must pay admission charges and fees for extra-curricular activities."
+    },
+    {
+      "question": "What should students bring for admission?",
+      "answer": "Students must bring bucket, pillow, bedsheet, and blanket. The hostel provides books and stationery."
+    },
+    {
+      "question": "What is the daily routine?",
+      "answer": "Day starts at 5:00 AM with wake up, followed by prayer at 6:00 AM, breakfast at 6:30 AM, study at 7:30 AM, school from 10:45 AM to 4:00 PM, snacks at 4:30 PM, evening study at 7:30 PM, dinner at 9:00 PM, and bedtime at 10:30 PM."
+    },
+    {
+      "question": "How many meals are provided?",
+      "answer": "Four meals are provided free of cost daily: breakfast at 6:30 AM, lunch at 10:30 AM, snacks at 4:30 PM, and dinner at 9:00 PM."
+    },
+    {
+      "question": "What are the vacation periods?",
+      "answer": "Students get two major vacations: Durga Puja vacation and summer vacation, each lasting about one month."
+    },
+    {
+      "question": "What items are prohibited?",
+      "answer": "Students are not allowed to carry smartphones, laptops, tablets, electronic devices, matches, or lighters."
+    },
+    {
+      "question": "Who is the incharge?",
+      "answer": "The branch is supervised by Shri Asit Kumar Das."
+    },
+    {
+      "question": "What is the address?",
+      "answer": "Bharat Sevashram Sangha, Panjipukur is located at W744+C39, Panjipukur, West Bengal 712305."
+    }
+  ]
+}

@@ -25,16 +25,41 @@ export default function LoginPage() {
     setError(null)
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      console.log("Attempting login for:", email)
+      
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
-        options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
-        },
       })
+      
+      console.log("Auth response:", { data, error })
+      
       if (error) throw error
-      router.push("/dashboard")
+      
+      if (!data.user) {
+        setError("No user returned from authentication")
+        return
+      }
+
+      // Check if user needs email verification
+      if (data.user.email_confirmed_at === null) {
+        setError("Please check your email and click the verification link before logging in.")
+        return
+      }
+      
+      // Ensure session exists before navigating
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
+      console.log("Session data:", sessionData)
+      
+      if (sessionError) throw sessionError
+      if (sessionData?.session?.user) {
+        console.log("Login successful, redirecting to dashboard")
+        router.push("/dashboard")
+      } else {
+        setError("Login succeeded but no session found. Check cookie settings and environment variables.")
+      }
     } catch (error: unknown) {
+      console.error("Login error:", error)
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {
       setIsLoading(false)

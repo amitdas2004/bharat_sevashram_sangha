@@ -31,21 +31,47 @@ export function LoginForm() {
     try {
       const supabase = createClient()
 
+      console.log("Attempting login for:", email)
+      
       const { data, error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
-        options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
-        },
       })
 
+      console.log("Auth response:", { data, error: authError })
+
       if (authError) {
+        console.error("Auth error:", authError)
         setError(authError.message)
         return
       }
 
-      if (data.user) {
+      if (!data.user) {
+        setError("No user returned from authentication")
+        return
+      }
+
+      // Check if user needs email verification
+      if (data.user.email_confirmed_at === null) {
+        setError("Please check your email and click the verification link before logging in.")
+        return
+      }
+
+      // Verify session is established before navigating
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
+      console.log("Session data:", sessionData)
+      
+      if (sessionError) {
+        console.error("Session error:", sessionError)
+        setError(sessionError.message)
+        return
+      }
+
+      if (sessionData?.session?.user) {
+        console.log("Login successful, redirecting to dashboard")
         router.push("/dashboard")
+      } else {
+        setError("Login succeeded but no session found. Check cookie settings and environment variables.")
       }
     } catch (err) {
       console.error("Login error:", err)
