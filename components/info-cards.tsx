@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, DollarSign, GraduationCap, Users } from "lucide-react"
+import { Calendar, IndianRupeeIcon, GraduationCap, Users } from "lucide-react"
 
 export function InfoCards() {
   const cards = [
@@ -23,7 +23,7 @@ export function InfoCards() {
       title: "Fees Due",
       value: "$0",
       description: "All paid up",
-      icon: DollarSign,
+      icon: IndianRupeeIcon,
       color: "text-green-600",
       bgColor: "bg-green-50",
     },

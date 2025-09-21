@@ -21,11 +21,11 @@ export default function InfoPage() {
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Monday - Friday</span>
-                <span className="font-medium">8:00 AM - 3:00 PM</span>
+                <span className="font-medium">10:45 AM - 4:30 PM</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Saturday</span>
-                <span className="font-medium">8:00 AM - 12:00 PM</span>
+                <span className="font-medium">10:45 AM - 1:30 PM</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Sunday</span>
@@ -46,15 +46,15 @@ export default function InfoPage() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="mr-3 h-4 w-4 text-gray-400" />
-                <span>+1 8017019305</span>
+                <span>+91 8017019305</span>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 h-4 w-4 text-gray-400" />
-                <span>info@sunshineacademy.edu</span>
+                <span>panjipukurbharatss@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="mr-3 h-4 w-4 text-gray-400" />
-                <span>123 Education St, Learning City, LC 12345</span>
+                <span>panjipukur,sanat, hoogly, west bengal, india</span>
               </div>
             </div>
           </CardContent>

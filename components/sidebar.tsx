@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, GraduationCap, Users, DollarSign, Calendar, Info, LogOut, MessageCircle } from "lucide-react"
+import { Home, GraduationCap, Users, IndianRupeeIcon, Calendar, Info, LogOut, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -12,7 +12,7 @@ const navigation = [
   { name: "Attendance", href: "/dashboard/attendance", icon: Users },
   { name: "General Info", href: "/dashboard/info", icon: Info },
   { name: "Help & Support", href: "/dashboard/help-support", icon: MessageCircle },
-  { name: "Finance", href: "/dashboard/finance", icon: DollarSign },
+  { name: "Finance", href: "/dashboard/finance", icon: IndianRupeeIcon },
   { name: "Events & Notices", href: "/dashboard/events", icon: Calendar },
 ]
 
