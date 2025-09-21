@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { DollarSign, CreditCard, FileText, Download } from "lucide-react"
+import { IndianRupeeIcon, CreditCard, FileText, Download } from "lucide-react"
 
 export default function FinancePage() {
   const feeStructure = [
@@ -70,12 +70,12 @@ export default function FinancePage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center">
-              <DollarSign className="h-4 w-4 mr-1" />
+              <IndianRupeeIcon className="h-4 w-4 mr-1" />
               Current Balance
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-600 mb-2">$0</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">₹0</div>
             <p className="text-sm text-gray-500">All monthly fees paid</p>
           </CardContent>
         </Card>
@@ -86,16 +86,16 @@ export default function FinancePage() {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-blue-600 mb-2">Jan 1</div>
-            <p className="text-sm text-gray-500">Monthly fee: $700</p>
+            <p className="text-sm text-gray-500">Monthly fee: ₹700</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-gray-600">Total Paid (YTD)</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Total Paid (Rupees)</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-gray-900 mb-2">$2,800</div>
+            <div className="text-3xl font-bold text-gray-900 mb-2">₹2,800</div>
             <p className="text-sm text-gray-500">Academic Year 2024-25</p>
           </CardContent>
         </Card>
@@ -105,7 +105,7 @@ export default function FinancePage() {
             <CardTitle className="text-sm font-medium text-gray-600">Pending Amount</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-orange-600 mb-2">$130</div>
+            <div className="text-3xl font-bold text-orange-600 mb-2">₹130</div>
             <p className="text-sm text-gray-500">Additional fees due</p>
           </CardContent>
         </Card>
@@ -124,13 +124,13 @@ export default function FinancePage() {
                     <h3 className="font-medium text-gray-900">{fee.category}</h3>
                     <p className="text-sm text-gray-500">{fee.frequency}</p>
                   </div>
-                  <div className="text-lg font-bold text-gray-900">${fee.amount}</div>
+                  <div className="text-lg font-bold text-gray-900">₹{fee.amount}</div>
                 </div>
               ))}
               <div className="border-t pt-3 mt-3">
                 <div className="flex justify-between items-center">
                   <span className="font-semibold text-gray-900">Total Monthly Fee</span>
-                  <span className="text-xl font-bold text-blue-600">$700</span>
+                  <span className="text-xl font-bold text-blue-600">₹700</span>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function FinancePage() {
                     <p className="text-sm text-gray-500">Due: {fee.dueDate}</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-lg font-bold text-gray-900">${fee.amount}</div>
+                    <div className="text-lg font-bold text-gray-900">₹{fee.amount}</div>
                     <Badge variant={fee.status === "paid" ? "default" : "secondary"}>{fee.status}</Badge>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function FinancePage() {
                   <p className="text-xs text-gray-400">Receipt: {payment.receipt}</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-lg font-bold text-gray-900">${payment.amount}</div>
+                  <div className="text-lg font-bold text-gray-900">₹{payment.amount}</div>
                   <Badge variant="default" className="bg-green-100 text-green-800 mb-2">
                     {payment.status}
                   </Badge>
@@ -212,7 +212,7 @@ export default function FinancePage() {
                   <p className="text-sm text-gray-500">{scholarship.period}</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-lg font-bold text-green-600">-${scholarship.amount}</div>
+                  <div className="text-lg font-bold text-green-600">-₹{scholarship.amount}</div>
                   <Badge variant={scholarship.status === "Received" ? "default" : "secondary"}>
                     {scholarship.status}
                   </Badge>
